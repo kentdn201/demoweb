@@ -12,7 +12,7 @@
 		header("Location:chucmung.php");
 	}
 	else{
-		echo "Ngu vl";
+		echo "Vao lai di";
 	}
  }
 		
