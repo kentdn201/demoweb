@@ -5,6 +5,13 @@
     $database = "ddcul1krvca7nt";
 
     $conn = mysqli_connect($servername, $username, $password, $database);
+
+    if(!conn){
+      echo("Kết nối không thành công");
+    }
+    else{
+        echo("Kết nối thành công");
+    }
 ?>
 
 <form action="index.php" method="post">
