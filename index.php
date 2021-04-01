@@ -1,4 +1,13 @@
-<form action="dangnhap.php" method="post">
+<?php 
+    $servername = "ec2-18-204-74-74.compute-1.amazonaws.com";
+    $username = "rrazuzxslncjlg";
+    $password = "bb9362cb79376fa38b5d90c020c36dfd99c0184b4eb82f4405353190588f52b9";
+    $database = "ddcul1krvca7nt";
+
+    $conn = mysqli_connect($servername, $username, $password, $database);
+?>
+
+<form action="index.php" method="post">
   <div class="container">
     <label for="username"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="username" required>
@@ -17,3 +26,19 @@
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
+
+<?php
+  $taikhoan = $_POST['username'];
+  $password = $_POST['password'];
+
+  $sql = "SELECT * FROM account where username = '$taikhoan' and password ='$password'";
+
+  $rs = mysqli_query($conn, $sql);
+
+  if (mysqli_num_rows($rs) > 0){
+    echo "Dang nhap thanh cong";
+  }
+  else{
+    echo "Dang nhap that bai";
+  }
+?>
