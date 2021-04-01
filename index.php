@@ -4,7 +4,7 @@
  if(isset($_POST['login'])){
 	$username = $_POST['username'];
  	$password = $_POST['password'];
- 	$sql= "SELECT * FROM account WHERE user_name ='$username' and pass='$password'";
+ 	$sql= "SELECT * FROM account WHERE username ='$username' and password='$password'";
 	$result = pg_query($conn, $sql);
 	$check = pg_num_rows($result);
 	if($check == 1){
