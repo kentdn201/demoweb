@@ -4,7 +4,7 @@
     $password = "bb9362cb79376fa38b5d90c020c36dfd99c0184b4eb82f4405353190588f52b9";
     $database = "ddcul1krvca7nt";
 
-    $conn = pg_connect($servername, $username, $password, $database);
+    $conn = pg_connect("host=ec2-18-204-74-74.compute-1.amazonaws.com dbname=ddcul1krvca7nt user=rrazuzxslncjlg password=bb9362cb79376fa38b5d90c020c36dfd99c0184b4eb82f4405353190588f52b9 port=5432");
 
     if(!conn){
       echo("Kết nối không thành công");
