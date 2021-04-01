@@ -4,7 +4,7 @@
     $password = "bb9362cb79376fa38b5d90c020c36dfd99c0184b4eb82f4405353190588f52b9";
     $database = "ddcul1krvca7nt";
 
-    $conn = mysql_connect($servername, $username, $password, $database);
+    $conn = pg_connect($servername, $username, $password, $database);
 
     if(!conn){
       echo("Kết nối không thành công");
