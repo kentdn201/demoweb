@@ -1,24 +1,22 @@
 <?php	 
- $conn = pg_connect("host=ec2-18-204-74-74.compute-1.amazonaws.com dbname=ddcul1krvca7nt user=rrazuzxslncjlg password=bb9362cb79376fa38b5d90c020c36dfd99c0184b4eb82f4405353190588f52b9 port=5432");
+ $conn = pg_connect("host=ec2-23-22-191-232.compute-1.amazonaws.com dbname=ddpnh3fllikoh9 user=qlacuryvjwfagg password=2b902a01a3f536a9bc5398855594f01f3b6932ee4df7906b980e69d3726c4715 port=5432");
+  	if($conn){echo 'status : connected';}
  if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$username = $_POST['username'];
-  $password = $_POST['password'];
-    $sql="SELECT * FROM account WHERE user_name ='$username' and pass='$password'";
+ 	$password = $_POST['password'];
+ 	$sql="SELECT * FROM account WHERE user_name ='$username' and pass='$password'";
 	$result = pg_query($conn, $sql);
 if (!$result) {
   echo "An error occurred.\n";
   exit;
 }
-
 while ($row = pg_fetch_row($result)) {
   echo "name: $row[1]  pass: $row[2]";
   echo "<br />\n";
 }
-	header('Location:chucmung.php');
-	 
-
+echo 'heloo';
   }else{
-	 echo '\n login status : false';
+	 echo ' login status : false';
  }
  ?>
 
@@ -40,50 +38,19 @@ while ($row = pg_fetch_row($result)) {
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<div class="container">
-	<div class="d-flex justify-content-center h-100">
+	<div class="container">
 		<div class="card">
-			<div class="card-header">
-				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
-			</div>
-			<div class="card-body">
-				<form method="POST">
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input type="text" class="form-control" placeholder="username" name="username">
-						
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input type="password" class="form-control" placeholder="password" name="password">
-					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
-					</div>
-				</form>
-			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
-				</div>
-			</div>
+			<h3>Sign In</h3>
 		</div>
+		<form method="POST">
+		<div class="card-body">
+			<label>username</label>
+			<input type="text" name="username">
+			<label>password</label>
+			<input type="password" name="password">
+			<input type="submit" value="login">
+		</div>
+		</form>
 	</div>
-</div>
 </body>
 </html>
