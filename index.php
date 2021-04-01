@@ -1,21 +1,22 @@
 <?php	 
  $conn = pg_connect("host=ec2-18-204-74-74.compute-1.amazonaws.com dbname=ddcul1krvca7nt user=rrazuzxslncjlg password=bb9362cb79376fa38b5d90c020c36dfd99c0184b4eb82f4405353190588f52b9 port=5432");
-  	if($conn){echo 'status : connected';}
- if($_SERVER['REQUEST_METHOD'] == 'POST'){
+ if(!$conn){echo "Lost Connect";}
+ if(isset($_POST['login'])){
 	$username = $_POST['username'];
  	$password = $_POST['password'];
- 	$sql="SELECT * FROM account WHERE username ='$username' and password='$password'";
+ 	$sql= "SELECT * FROM account WHERE user_name ='$username' and pass='$password'";
 	$result = pg_query($conn, $sql);
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
-}
-$row = pg_fetch_row($result);
-echo $row;
-echo 'heloo';
-  }else{
-	 echo ' login status : false';
+	$check = pg_num_rows($result);
+	if($check == 1){
+		echo "Vao dc roi";
+		header("Location:chucmung.php");
+	}
+	else{
+		echo "Ngu vl";
+	}
  }
+		
+
  ?>
 
 <!DOCTYPE html>
@@ -40,14 +41,14 @@ echo 'heloo';
 		<div class="card">
 			<h3>Sign In</h3>
 		</div>
-		<form method="POST">
-		<div class="card-body">
-			<label>username</label>
-			<input type="text" name="username">
-			<label>password</label>
-			<input type="password" name="password">
-			<input type="submit" value="login">
-		</div>
+		<form method="post">
+			<div class="card-body">
+				<label>username</label>
+				<input type="text" name="username">
+				<label>password</label>
+				<input type="password" name="password">
+				<button name="login" type="submit" value="login">Login</button>
+			</div>
 		</form>
 	</div>
 </body>
